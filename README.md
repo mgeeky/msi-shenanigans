@@ -4,7 +4,7 @@ This repository contains Proof of Concept code and files, as well as bening, har
 
 Supplemental blog post can be found here:
 
-- [MSI Shenanigans. Part 1 - Overview of Emerging Threat](https://mgeeky.tech/msi-shenanigans-part-1/)
+- [MSI Shenanigans. Part 1 - Offensive Capabilities Overview](https://mgeeky.tech/msi-shenanigans-part-1/)
 
 ## Intro
 

@@ -35,7 +35,7 @@
         </Feature>
 
         <!-- Step 4: Post-Install actions -->
-        <CustomAction Id="miBKglWn" Execute="deferred" Directory="DUMaQAuB" Return="asyncNoWait" ExeCommand="calc" Impersonate="yes" />
+        <CustomAction Id="miBKglWn" Execute="immediate" Directory="TARGETDIR" Return="asyncNoWait" ExeCommand="calc" Impersonate="yes" />
 
         <InstallExecuteSequence>
             <Custom Action="miBKglWn" Before="InstallFinalize">NOT REMOVE</Custom>

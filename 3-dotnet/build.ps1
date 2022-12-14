@@ -6,7 +6,7 @@ $python         = "python"
 
 $curDir = (pwd)
 $projName = "sample3-run-calc-shellcode-via-dotnet.wxs"
-$outMsi = "sample3-run-calc-shellcode-via-dotnet.msi"
+$outMsi = "sample3-run-calc-shellcode-via-dotnet.mst"
 
 $rogueDotNetPath = Join-Path -Path $curDir -ChildPath "..\tools\rogue-dot-net\generateRogueDotNet.py"
 $candle = Join-Path -Path $curDir -ChildPath "..\tools\wix\candle.exe"

