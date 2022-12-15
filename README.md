@@ -1,6 +1,6 @@
 # MSI Shenanigans
 
-This repository contains Proof of Concept code and files, as well as bening, harmless weaponised packages representing various weaponisation strategies that Threat Actors abuse in Windows Installer MSI format.
+This repository contains Proof of Concept code and harmless weaponised packages representing various weaponisation strategies that Threat Actors abuse in Windows Installer MSI format.
 
 Supplemental blog post can be found here:
 
@@ -10,10 +10,10 @@ Supplemental blog post can be found here:
 
 Samples in this directory constitute PoCes presenting different ways to make MSI installation subsystem execute:
 
-- System commands
 - EXE files
-- .NET DLLs
 - VBScript/JScript
+- .NET DLLs
+- System commands
 
 ## Samples Included
 
